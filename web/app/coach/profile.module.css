@@ -1,0 +1,128 @@
+.profile:global(.coach-shell) {
+  max-width: 808px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vh, 52px) 24px 48px;
+}
+
+.profile > :global(.brand) {
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+.profile > :global(.brand) span { color: var(--text-muted); }
+
+.flow:global(.phase-tabs) {
+  gap: 0;
+  margin: 20px 0 28px;
+}
+
+.flow :global(.phase) {
+  position: relative;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.flow :global(.phase):not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: calc(50% + 23px);
+  width: calc(100% - 46px);
+  height: 1px;
+  background: var(--border);
+}
+
+.flow :global(.phase-num) {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+
+.flow :global(.active) :global(.phase-num) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1e2329;
+}
+
+.profile .panel {
+  min-height: 460px;
+  padding: 36px 40px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1b2027, #12161c);
+  box-shadow: 0 18px 48px #00000026;
+}
+
+.eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 12px; letter-spacing: .06em; }
+.panel :global(.h1) { margin-top: 0; font-size: 28px; line-height: 1.4; }
+.panel :global(.muted) { line-height: 1.8; }
+.overview { list-style: none; margin: 28px 0; padding: 0; counter-reset: steps; }
+.overview li { position: relative; padding: 0 0 20px 38px; counter-increment: steps; }
+.overview li:last-child { padding-bottom: 0; }
+.overview li::before { content: counter(steps, decimal-leading-zero); position: absolute; left: 0; top: 2px; font-size: 12px; color: var(--text-muted); }
+.overview strong { display: block; font-size: 15px; font-weight: 500; }
+.overview span { display: block; margin-top: 5px; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+.start { border-top: 1px solid var(--border); padding-top: 24px; text-align: center; }
+.start :global(.btn) { min-width: 240px; min-height: 46px; border-radius: 8px; }
+.start p { margin: 14px 0 0; font-size: 12px; }
+.progress { display: block; width: 100%; height: 4px; margin: 14px 0 26px; border: 0; border-radius: 4px; overflow: hidden; background: var(--border); accent-color: var(--accent); }
+.progress::-webkit-progress-bar { background: var(--border); }
+.progress::-webkit-progress-value { background: var(--accent); }
+.progress::-moz-progress-bar { background: var(--accent); }
+.questionHeader { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.question { margin: 0 0 16px; color: var(--accent); font-size: 20px; font-weight: 600; line-height: 1.65; }
+.summaryBlocks { display: grid; gap: 14px; margin: 26px 0 20px; }
+.summaryBlock { padding: 20px 22px; border: 1px solid #ffffff08; border-radius: 12px; background: #10151b; }
+.summaryBlock:nth-child(2) { background: #20262e; }
+.summaryBlock h2 { color: var(--accent); font-size: 15px; font-weight: 600; margin: 0 0 12px; }
+.summaryBlock p { margin: 0; color: #bac3ce; font-size: 14px; }
+.summaryList { padding-left: 18px; margin: 0; color: #bac3ce; font-size: 14px; line-height: 1.85; overflow-wrap: anywhere; }
+.summaryList li + li { margin-top: 10px; }
+.summaryList li::marker { color: #697581; }
+.more { color: var(--text-muted); font-size: 13px; line-height: 1.8; }
+.more summary { cursor: pointer; width: fit-content; padding: 6px 0; }
+.more[open] summary { margin-bottom: 10px; }
+.summaryBlock .more { margin-top: 10px; }
+.completionActions { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
+.completionActions :global(.btn-primary) { min-height: 46px; padding: 12px 32px; border-radius: 8px; }
+.textButton { border: 0; background: transparent; color: var(--text-muted); cursor: pointer; padding: 8px 12px; font-size: 13px; }
+.textButton:hover { color: var(--text); }
+.profileChat { margin-top: 22px; padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: #161c23; }
+.profileChat h2 { margin: 0; color: var(--accent); font-size: 16px; }
+.chatHistory { max-height: 420px; overflow-y: auto; margin: 18px 0; }
+.chatHistory { scrollbar-width: thin; scrollbar-color: #756b48 #161c23; scrollbar-gutter: stable; }
+.chatHistory::-webkit-scrollbar { width: 5px; }
+.chatHistory::-webkit-scrollbar-track { background: #161c23; }
+.chatHistory::-webkit-scrollbar-thumb { background: #756b48; border-radius: 8px; }
+.chatHistory::-webkit-scrollbar-thumb:hover { background: #a49358; }
+.agentMessage, .userMessage { padding: 14px 16px; margin-bottom: 12px; border-radius: 10px; color: #bac3ce; font-size: 14px; }
+.agentMessage { background: #10151b; margin-right: 20px; }
+.userMessage { background: #2a3038; margin-left: 20px; }
+.agentMessage strong { color: var(--accent); font-size: 12px; }
+.userMessage strong { color: var(--text-muted); font-size: 12px; }
+.chatInput { width: 100%; padding: 12px; margin: 10px 0; background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); border-radius: 8px; resize: vertical; font: inherit; }
+.prose { white-space: pre-wrap; line-height: 1.8; overflow-wrap: anywhere; }
+.profileFields { border: 0; margin: 24px 0; padding: 0; min-width: 0; }
+.profileFields label { display: block; margin-top: 24px; font-weight: 600; }
+.profileFields textarea { width: 100%; padding: 14px; color: var(--text); background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; line-height: 1.7; font: inherit; resize: vertical; }
+.profileFields input[type="file"] { display: block; max-width: 100%; margin: 16px 0 24px; }
+.importSummary { padding: 12px; background: var(--bg-elevated); border-radius: 8px; margin-bottom: 24px; overflow-wrap: anywhere; }
+.questionHeader :global(.panel-title) { margin: 0; }
+.questionHeader :global(.btn) { flex-shrink: 0; font-size: 13px; }
+.panel :global(.option) { padding: 14px 16px; border-radius: 8px; line-height: 1.6; }
+@media (max-width: 600px) {
+  .profile:global(.coach-shell) { padding: 24px 16px 36px; }
+  .flow:global(.phase-tabs) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .flow :global(.phase) { font-size: 12px; }
+  .profile .panel { padding: 26px 22px; min-height: 0; }
+  .panel :global(.h1) { font-size: 24px; }
+  .start :global(.btn) { min-width: 0; width: 100%; }
+}

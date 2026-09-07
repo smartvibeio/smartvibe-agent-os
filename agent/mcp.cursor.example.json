@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "smartvibe-trading-coach": {
+      "command": "<项目绝对目录>/.runtime/node-v24.13.0-win-x64/node.exe",
+      "args": [
+        "--experimental-sqlite",
+        "--import",
+        "file:///<项目绝对目录>/node_modules/tsx/dist/loader.mjs",
+        "<项目绝对目录>/agent/mcp-server/index.ts"
+      ],
+      "env": {
+        "SMARTVIBE_DATA_DIR": "<项目绝对目录>/data"
+      }
+    }
+  }
+}

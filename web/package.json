@@ -1,0 +1,26 @@
+{
+  "name": "smartvibe-web",
+  "version": "0.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "node --experimental-sqlite --no-warnings ./node_modules/next/dist/bin/next dev -p 3001 -H 127.0.0.1",
+    "build": "node --experimental-sqlite --no-warnings ./node_modules/next/dist/bin/next build",
+    "start": "node --experimental-sqlite --no-warnings ./node_modules/next/dist/bin/next start -p 3001 -H 127.0.0.1"
+  },
+  "dependencies": {
+    "lightweight-charts": "^4.2.0",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "smartvibe-agent-os": "file:.."
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=24.13.0 <25"
+  }
+}

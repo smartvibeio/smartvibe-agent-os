@@ -1,0 +1,29 @@
+name: cross-platform
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.13.0
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm --prefix web ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run test:runtime
+      - run: npm run build
+      - run: npm --prefix web run build
+      - if: runner.os == 'macOS'
+        run: |
+          sh -n scripts/macos.sh && sh -n 首次安装.command && sh -n 启动交易陪练.command && sh -n 连接检查.command
+          test -x scripts/macos.sh && test -x 首次安装.command && test -x 启动交易陪练.command && test -x 连接检查.command

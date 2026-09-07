@@ -1,0 +1,40 @@
+{
+  "name": "smartvibe-agent-os",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SmartVibe 交易分身 Agent — 可安装到开发平台使用",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "db:migrate": "node --experimental-sqlite --no-warnings --import tsx src/db/migrate.ts",
+    "db:seed": "node --experimental-sqlite --no-warnings --import tsx src/fixtures/seed.ts",
+    "verify:same-market": "node --experimental-sqlite --no-warnings --import tsx src/scripts/verify-same-market.ts",
+    "demo": "node --experimental-sqlite --no-warnings --import tsx src/demo/runDemo.ts",
+    "demo:auto": "node --experimental-sqlite --no-warnings --import tsx src/demo/runDemo.ts --auto",
+    "demo:web": "npm --prefix web run dev",
+    "agent:smoke": "node --experimental-sqlite --no-warnings --import tsx agent/smoke.ts",
+    "agent:mcp": "node --experimental-sqlite --no-warnings --import tsx agent/mcp-server/index.ts",
+    "agent:binance-probe": "node --experimental-sqlite --no-warnings --import tsx agent/binance-mcp-probe.ts",
+    "phase1": "npm run db:migrate && npm run db:seed && npm run verify:same-market && npm test",
+    "phase2": "npm run demo:auto && npm test",
+    "phase3": "npm test && npm --prefix web run build",
+    "test": "node --experimental-sqlite --no-warnings ./node_modules/vitest/vitest.mjs run",
+    "test:runtime": "node --test scripts/runtime.test.mjs",
+    "test:watch": "node --experimental-sqlite --no-warnings ./node_modules/vitest/vitest.mjs",
+    "release:prepare": "node scripts/release.mjs"
+  },
+  "engines": {
+    "node": ">=24.13.0 <25"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "undici": "^7.29.0",
+    "zod": "^4.5.4"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://smartvibe.local/schemas/interview-scenario.json",
+  "title": "TradingInterviewScenario",
+  "description": "Extensible Trading Interview scenario. Cold-start only — not a personality quiz.",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "category",
+    "market_context",
+    "question",
+    "options"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1,
+      "examples": ["iv_fomo_chase_pump"]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "fomo",
+        "panic_selling",
+        "patience",
+        "risk_tolerance",
+        "confirmation_bias"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "Optional short display title"
+    },
+    "market_context": {
+      "type": "object",
+      "required": ["symbol", "summary", "metrics", "source"],
+      "properties": {
+        "symbol": { "type": "string" },
+        "summary": { "type": "string" },
+        "metrics": {
+          "type": "object",
+          "required": ["price_change_pct"],
+          "properties": {
+            "price_change_pct": { "type": "number" },
+            "volatility_regime": {
+              "type": ["string", "null"],
+              "enum": ["low", "medium", "high", "extreme", null]
+            },
+            "volume_change_pct": { "type": ["number", "null"] },
+            "open_interest_change_pct": { "type": ["number", "null"] },
+            "funding_rate": { "type": ["number", "null"] },
+            "funding_elevated": { "type": ["boolean", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "source": {
+          "type": "string",
+          "const": "interview_scenario"
+        }
+      },
+      "additionalProperties": false
+    },
+    "question": {
+      "type": "string",
+      "description": "What the AI asks the user in this situation"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/InterviewOption" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "DimensionKey": {
+      "type": "string",
+      "enum": [
+        "momentum_preference",
+        "patience",
+        "fomo_tendency",
+        "confirmation_need",
+        "holding_preference",
+        "risk_tolerance",
+        "drawdown_response",
+        "size_aggression",
+        "exposure_comfort"
+      ]
+    },
+    "InterviewOption": {
+      "type": "object",
+      "required": ["option_id", "label", "decision_pattern", "dimension_impact"],
+      "properties": {
+        "option_id": {
+          "type": "string",
+          "description": "Stable id within the scenario"
+        },
+        "label": { "type": "string" },
+        "decision_pattern": {
+          "type": "string",
+          "enum": [
+            "chase_entry",
+            "enter_small",
+            "hold",
+            "observe_wait",
+            "trim",
+            "reduce_risk",
+            "exit_bias"
+          ]
+        },
+        "dimension_impact": {
+          "type": "object",
+          "description": "Signed deltas applied to Twin dimensions when this option is chosen (cold start).",
+          "additionalProperties": false,
+          "properties": {
+            "momentum_preference": { "type": "number" },
+            "patience": { "type": "number" },
+            "fomo_tendency": { "type": "number" },
+            "confirmation_need": { "type": "number" },
+            "holding_preference": { "type": "number" },
+            "risk_tolerance": { "type": "number" },
+            "drawdown_response": { "type": "number" },
+            "size_aggression": { "type": "number" },
+            "exposure_comfort": { "type": "number" }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

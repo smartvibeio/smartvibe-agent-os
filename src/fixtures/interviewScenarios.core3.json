@@ -1,0 +1,168 @@
+[
+  {
+    "scenario_id": "iv_fomo_chase_pump",
+    "category": "fomo",
+    "title": "Rapid Pump / FOMO",
+    "question": "BTC pumps +20% quickly. You have no position. What do you usually lean toward?",
+    "market_context": {
+      "symbol": "BTCUSDT",
+      "summary": "Rapid upside with no current position",
+      "metrics": {
+        "price_change_pct": 20,
+        "volatility_regime": "extreme",
+        "volume_change_pct": 120,
+        "open_interest_change_pct": 25,
+        "funding_rate": 0.0012,
+        "funding_elevated": true
+      },
+      "source": "interview_scenario"
+    },
+    "options": [
+      {
+        "option_id": "chase",
+        "label": "Chase the move",
+        "decision_pattern": "chase_entry",
+        "dimension_impact": {
+          "fomo_tendency": 10,
+          "momentum_preference": 8,
+          "patience": -8,
+          "confirmation_need": -6,
+          "size_aggression": 6
+        }
+      },
+      {
+        "option_id": "small",
+        "label": "Enter small",
+        "decision_pattern": "enter_small",
+        "dimension_impact": {
+          "momentum_preference": 5,
+          "confirmation_need": 4,
+          "fomo_tendency": -4,
+          "size_aggression": -4
+        }
+      },
+      {
+        "option_id": "wait",
+        "label": "Wait for confirmation / pullback",
+        "decision_pattern": "observe_wait",
+        "dimension_impact": {
+          "patience": 10,
+          "confirmation_need": 8,
+          "fomo_tendency": -10,
+          "momentum_preference": -6
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "iv_panic_drawdown",
+    "category": "panic_selling",
+    "title": "Sharp Drop / Panic",
+    "question": "You are in a position and BTC drops -8% in one session. What do you usually lean toward?",
+    "market_context": {
+      "symbol": "BTCUSDT",
+      "summary": "Sharp drawdown while holding exposure",
+      "metrics": {
+        "price_change_pct": -8,
+        "volatility_regime": "extreme",
+        "volume_change_pct": 90,
+        "open_interest_change_pct": -10,
+        "funding_rate": -0.0003,
+        "funding_elevated": false
+      },
+      "source": "interview_scenario"
+    },
+    "options": [
+      {
+        "option_id": "exit",
+        "label": "Cut / exit bias",
+        "decision_pattern": "exit_bias",
+        "dimension_impact": {
+          "drawdown_response": -10,
+          "risk_tolerance": -8,
+          "holding_preference": -8,
+          "confirmation_need": 6,
+          "patience": -4
+        }
+      },
+      {
+        "option_id": "reduce",
+        "label": "Reduce risk",
+        "decision_pattern": "reduce_risk",
+        "dimension_impact": {
+          "drawdown_response": -6,
+          "risk_tolerance": -6,
+          "exposure_comfort": -6,
+          "patience": 4,
+          "fomo_tendency": -4
+        }
+      },
+      {
+        "option_id": "hold",
+        "label": "Hold through it",
+        "decision_pattern": "hold",
+        "dimension_impact": {
+          "drawdown_response": 10,
+          "holding_preference": 10,
+          "patience": 6,
+          "risk_tolerance": 4,
+          "size_aggression": -4
+        }
+      }
+    ]
+  },
+  {
+    "scenario_id": "iv_confirmation_false_break",
+    "category": "confirmation_bias",
+    "title": "False Breakout / Confirmation",
+    "question": "Price breaks a range then fails reclaim. What do you usually lean toward?",
+    "market_context": {
+      "symbol": "BTCUSDT",
+      "summary": "Failed breakout / false break",
+      "metrics": {
+        "price_change_pct": 1.2,
+        "volatility_regime": "high",
+        "volume_change_pct": 40,
+        "open_interest_change_pct": 12,
+        "funding_rate": 0.0004,
+        "funding_elevated": true
+      },
+      "source": "interview_scenario"
+    },
+    "options": [
+      {
+        "option_id": "lean_in",
+        "label": "Treat it as real and lean in",
+        "decision_pattern": "chase_entry",
+        "dimension_impact": {
+          "confirmation_need": -10,
+          "momentum_preference": 8,
+          "fomo_tendency": 6,
+          "patience": -6
+        }
+      },
+      {
+        "option_id": "wait_reaccept",
+        "label": "Wait for re-acceptance",
+        "decision_pattern": "observe_wait",
+        "dimension_impact": {
+          "confirmation_need": 10,
+          "patience": 8,
+          "momentum_preference": -6,
+          "fomo_tendency": -4
+        }
+      },
+      {
+        "option_id": "trim",
+        "label": "Trim speculative add-ons",
+        "decision_pattern": "trim",
+        "dimension_impact": {
+          "confirmation_need": 6,
+          "size_aggression": -6,
+          "risk_tolerance": -4,
+          "exposure_comfort": -4
+        }
+      }
+    ]
+  }
+]

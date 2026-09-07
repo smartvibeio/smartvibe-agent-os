@@ -1,0 +1,52 @@
+.demo { display: grid; gap: 18px; min-width: 0; }
+.demo > * { min-width: 0; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.headingActions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
+.heading :global(.h1) { margin: 8px 0; }
+.historyBar, .controls { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+.rateSelect { height: 38px; }
+.historyBar select { max-width: 100%; }
+.setup, .player, .fills, .result { border-radius: 14px; padding: 24px; }
+.fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.fields label, .controls label { display: grid; gap: 8px; font-size: 13px; color: var(--text-muted); }
+.demo input, .demo select, .demo textarea { min-width: 0; padding: 9px; background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); border-radius: 6px; }
+.context { display: grid; gap: 8px; margin: 18px 0; color: var(--text-muted); font-size: 13px; }
+.prepareRow { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.prepareProgress { display: grid; gap: 6px; width: min(360px, 100%); color: var(--text-muted); font-size: 12px; }
+.prepareProgress div { display: flex; justify-content: space-between; gap: 16px; }
+.prepareProgress strong { color: var(--accent); }
+.prepareProgress progress { width: 100%; height: 7px; overflow: hidden; border: 0; border-radius: 999px; background: #2b3139; }
+.prepareProgress progress::-webkit-progress-bar { background: #2b3139; border-radius: 999px; }
+.prepareProgress progress::-webkit-progress-value { background: var(--accent); border-radius: 999px; transition: width .35s ease; }
+.prepareProgress progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
+.exactSetup { margin-top: 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: #14191f; }
+.exactSetup summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.fieldError { color: #ff7684; font-size: 12px; line-height: 1.45; }
+.demo [aria-invalid="true"] { border-color: #f6465d; box-shadow: 0 0 0 1px #f6465d55; }
+.seek { width: 100%; accent-color: var(--accent); }
+.funds { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.funds div { padding: 12px; background: #14191f; border-radius: 8px; }
+.funds span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.funds strong { font-size: 18px; }
+.decision { padding: 20px; border-radius: 10px; background: #151b22; margin: 16px 0; line-height: 1.8; }
+.decision h2, .result h2 { color: var(--accent); font-size: 18px; margin: 0 0 10px; }
+.fills table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.fills th, .fills td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+.fills th { color: var(--text-muted); font-weight: 400; }
+.player :global(.coach-chart) { min-height: 370px; min-width: 0; max-width: 100%; }
+.chartStage { position: relative; overflow: hidden; }
+.chartStage :global(.coach-chart), .chartStage :global(.coach-chart > div:first-child) { min-height: 560px; }
+.liveDecision { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; align-items: start; margin-top: 14px; padding: 14px 16px; background: #14191f; border-radius: 10px; }
+.liveDecision span { color: var(--accent); font-weight: 700; }
+.liveDecision p { margin: 0; line-height: 1.7; }
+.liveDecision small { grid-column: 2; color: var(--text-muted); }
+.methodology { margin-top: 18px !important; }
+.afterGrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 18px; align-items: stretch; }
+.replayChat { margin-top: 0 !important; height: 100%; }
+.result h3 { color: var(--accent); margin-top: 24px; }
+.next { display: flex; justify-content: center; padding: 12px; }
+.practiceButton { display: grid !important; gap: 4px; min-width: 260px; padding: 14px 28px !important; border-radius: 12px !important; text-align: center; }
+.practiceButton strong { font-size: 18px; line-height: 1.25; }
+.practiceButton span { font-size: 11px; line-height: 1.25; font-weight: 500; opacity: .78; }
+@media (max-width: 900px) { .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } .funds { grid-template-columns: repeat(3, minmax(0, 1fr)); } .afterGrid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .heading { align-items: flex-start; flex-direction: column; } .headingActions { width: 100%; justify-content: flex-start; } .setup, .player, .fills, .result { padding: 16px; } .fields, .funds { grid-template-columns: repeat(2, minmax(0, 1fr)); } .historyBar label { min-width: 0; width: 100%; } }

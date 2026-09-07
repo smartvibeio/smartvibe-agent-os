@@ -1,0 +1,117 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+}
+
+.card {
+  width: min(100%, 480px);
+  min-height: 640px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 38px 32px 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: 0 20px 60px #0003;
+  text-align: center;
+}
+
+.brand {
+  color: #aeb6c2;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+}
+
+.heading { margin-top: 54px; }
+.heading h1 {
+  margin: 0;
+  font-size: clamp(25px, 5vw, 32px);
+  line-height: 1.4;
+  font-weight: 700;
+}
+.heading p {
+  margin: 14px 0 0;
+  color: #aeb6c2;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.value { width: 100%; margin: 42px 0 46px; }
+.value h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 22px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #aeb6c2;
+}
+.value h2::before, .value h2::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: #626a76;
+}
+.value p {
+  margin: 0;
+  padding: 20px 24px;
+  border: 1px solid #f0b90b55;
+  border-radius: 8px;
+  background: #f0b90b05;
+  font-size: 16px;
+  line-height: 2;
+  text-align: left;
+}
+
+.start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  min-width: 144px;
+  min-height: 48px;
+  margin-top: auto;
+  border-radius: 6px;
+  background: #f0b90b;
+  color: #1e2329;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 0 18px 0 rgb(240 185 11 / 14%),
+              0 0 38px 0 rgb(240 185 11 / 6%);
+  animation: breathe 3s ease-in-out infinite;
+  transition: background .2s, transform .12s;
+}
+.start:hover { background: #f8d12f; }
+.start:active { transform: scale(.95); }
+.start:focus-visible { outline: 2px solid #eaecef; outline-offset: 5px; }
+.privacy {
+  margin: 34px 0 0;
+  font-size: 11px;
+  color: #a0a8b4;
+  line-height: 1.8;
+}
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 18px 0 rgb(240 185 11 / 14%),
+                0 0 38px 0 rgb(240 185 11 / 6%);
+  }
+  50% {
+    box-shadow: 0 0 18px 0 rgb(240 185 11 / 38%),
+                0 0 38px 0 rgb(240 185 11 / 18%);
+  }
+}
+@media (max-width: 420px) {
+  .page { padding: 16px; }
+  .card { padding: 30px 22px 24px; min-height: 600px; aspect-ratio: auto; }
+  .heading { margin-top: 42px; }
+  .value p { padding: 16px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .start { animation: none; transition: none; }
+}
